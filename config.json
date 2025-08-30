@@ -1,0 +1,134 @@
+{
+  "jupiter_base": "https://quote-api.jup.ag/v6",
+  "prefer_orca": false,
+  "max_slippage_bps": 7,
+  "min_profit_bps": 25,
+
+  "notional_sol": 0.09,
+  "dry_run": false,
+  "poll_ms": 7500,
+
+  "aggressive": {
+    "enabled": true,
+    "only_direct_routes": false,
+    "sleep_ms": 7500
+  },
+
+  "min_profit": {
+    "mode": "abs",
+    "value": 0.0,
+    "denom": "SOL"
+  },
+
+  "tokens": {
+    "WSOL": "So11111111111111111111111111111111111111112",
+    "USDC": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "RAY": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+    "BONK": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"
+    
+  },
+
+  "pairs": [
+    { "inputMint": "So11111111111111111111111111111111111111112", "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "label": "SOL→USDC" },
+    { "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "outputMint": "So11111111111111111111111111111111111111112", "label": "USDC→SOL" },
+    { "inputMint": "So11111111111111111111111111111111111111112", "outputMint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R", "label": "SOL→RAY" },
+    { "inputMint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R", "outputMint": "So11111111111111111111111111111111111111112", "label": "RAY→SOL" },
+    { "inputMint": "So11111111111111111111111111111111111111112", "outputMint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263", "label": "SOL→BONK" },
+    { "inputMint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263", "outputMint": "So11111111111111111111111111111111111111112", "label": "BONK→SOL" },
+    { "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "outputMint":"DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263", "label": "USDC→BONK" },
+    { "inputMint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263", "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "label": "BONK→USDC" },
+    {"inputMint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R", "outputMint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263", "label": "RAY→BONK" },
+    { "inputMint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263", "outputMint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R", "label": "BONK→RAY" }
+  ],
+
+  "markets": {
+    "mode": "scan_all",
+    "allow_list": [
+      ["So11111111111111111111111111111111111111112","EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v","SOL→USDC"],
+      ["EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v","So11111111111111111111111111111111111111112","USDC→SOL"],
+      ["So11111111111111111111111111111111111111112","4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R","SOL→RAY"],
+      ["4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R","So11111111111111111111111111111111111111112","RAY→SOL"],
+      ["So11111111111111111111111111111111111111112","DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263","SOL→BONK"],
+      ["DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263","So11111111111111111111111111111111111111112","BONK→SOL"]
+     
+    ],
+    "min_liquidity_usd": 1000,
+    "min_profit_bps": 100
+  },
+
+  "bundles": {
+   "two_leg": [ { "name": "SOL→BONK accumulate", "from": "So11111111111111111111111111111111111111112", "to": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263" }],
+   "three_leg": []
+                  
+  },
+
+  "execution": {
+   "simulate_first": false,
+   "commit": true,
+   "timeout_ms": 20000,
+   "retries": 1,
+   "price_impact_bps_limit": 3,
+   "fee_buffer_lamports": 3050,
+   "min_cycle_pnl_lamports": 40000
+  },
+
+  "account_setup": {
+    "ensure_atas": true,
+    "create_if_missing": true,
+    "on_startup": true,
+    "mints": [
+      "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+      "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+      "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
+      "SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt"
+    ]
+  },
+
+  "rpcs": [
+    "https://api.mainnet-beta.solana.com"
+    
+  ],
+  "ws_rpcs": [
+  ],
+
+  "rpc_config": {
+    "commitment": "processed",
+    "preflight_commitment": "processed",
+    "skip_preflight": true,
+    "max_retries": 1,
+    "timeout_ms": 35000
+  },
+
+  "fees": {
+    "lamports_per_signature": 3000,
+    "priority_fee_lamports": 1500
+  },
+
+  "jito": {
+    "use": true,
+    "block_engine": "https://mainnet.block-engine.jito.wtf/api/v1/bundles",
+    "tip_account": "HFqU5x63VTqQss8hp11i4wVV8bD44PvwucfZ2bU7gRe",
+    "default_tip_lamports": 1000,
+    "max_bundle_retries": 1
+  },
+
+  "limiter": {
+    "rps": 1,
+    "burst": 1,
+    "jitter_ms": 7700
+  },
+
+  "auto_unwind": {
+    "enabled": false,
+    "base_mint": "So11111111111111111111111111111111111111112",
+    "min_token_ui": 0.001,
+    "mode": "whitelist",
+    "tokens": [
+     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So"
+    ],
+    "min_profit_bps": 120,
+    "check_every_ms": 350000
+  }
+} 
