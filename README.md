@@ -3,7 +3,7 @@ Cristi – Open Source Projects
 Welcome to my GitHub! 🚀
 Here you will find my open-source projects focused on trading bots, blockchain tools, and automation.
 
-This repository contains multiple projects, one of them being BootuSolana, a Solana trading bot with full setup and modular codebase.
+This repository contains multiple projects, one of them being SolProRunner, a Solana trading bot with full setup and modular codebase.
 Check the READMETEXT.md file for detailed documentation about this bot.
 
 
